@@ -1,0 +1,21 @@
+.searchPage {
+  padding-top: 70px;
+}
+.search-section {
+  h3 {
+    text-align: center;
+  }
+
+  form {
+    margin-top: 20px;
+    button {
+      margin-left: 10px;
+    }
+  }
+}
+.movie-section {
+  margin-top: 30px;
+  padding: 0 120px;
+  display: grid;
+  row-gap: 20px;
+}
