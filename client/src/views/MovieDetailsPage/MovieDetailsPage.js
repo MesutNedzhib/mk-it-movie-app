@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "./MovieDetailsPage.scss";
 import Movie from "../../components/Movie/Movie";
 import StarRatings from "react-star-ratings";
+import { useHistory } from "react-router";
 
 function MovieDetailsPage() {
   const [rating, setRating] = useState();
   console.log(rating);
+  const history = useHistory();
+ 
 
   const changeRating = (newRating) => {
     setRating(newRating);

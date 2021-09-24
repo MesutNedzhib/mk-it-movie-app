@@ -1,30 +1,33 @@
 import React from "react";
 import "./Movie.scss";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function Movie() {
+function Movie({ movie }) {
   const history = useHistory();
+
+  console.log(movie);
   return (
     <div className="movie">
       <div className="movie-image">
         <img
           onClick={() => history.push("/movies/movie-title")}
-          src="https://static.posters.cz/image/750/posters/avengers-infinity-war-one-sheet-i58560.jpg"
+          src={
+            movie?.image?.medium ? movie?.image?.medium : movie?.image?.original
+          }
           alt=""
         />
       </div>
       <div className="movie-info">
-        <h2 onClick={() => history.push("/movies/movie-title")}>Title</h2>
-        <small>Drama, Thriller, Comedy | 90</small>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non magnam
-          maiores culpa. Quas, ad error. Obcaecati mollitia magni porro suscipit
-          debitis laudantium amet fugit. Sapiente accusamus iusto aperiam
-          suscipit ipsum. Temporibus, in modi pariatur mollitia rem
-          necessitatibus reiciendis ut eum, suscipit corrupti quibusdam amet
-          alias enim debitis laboriosam magni nisi.
-        </p>
-        <Link to="">Visit official site</Link>
+        <h2 onClick={() => history.push("/movies/movie-title")}>
+          {movie?.name}
+        </h2>
+        <small>
+          {movie?.genres.join(", ")} | {movie?.weight}m
+        </small>
+        <p>{movie?.summary?.replace(/<[^>]+>/g, "")}</p>
+        <a href={movie?.url ? movie?.url : ""} target="_blank">
+          Visit official site
+        </a>
         <button className="btn btn-outline-success">Add To Favorites</button>
       </div>
     </div>

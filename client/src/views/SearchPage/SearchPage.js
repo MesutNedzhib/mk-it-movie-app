@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Movie from "../../components/Movie/Movie";
 import "./SearchPage.scss";
 
 function SearchPage() {
+  const { loading, error, movies } = useSelector((state) => state.movies);
+
   return (
     <div className="searchPage">
       <div className="searchPage-container">
@@ -19,9 +22,9 @@ function SearchPage() {
         </div>
 
         <div className="movie-section">
-          <Movie />
-          <Movie />
-          <Movie />
+          {!movies?.length !== 0
+            ? movies?.map((movie) => <Movie movie={movie.show} />)
+            : ""}
         </div>
       </div>
     </div>

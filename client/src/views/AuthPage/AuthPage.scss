@@ -1,0 +1,55 @@
+.authPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .signIn {
+    width: 300px;
+    text-align: center;
+    h3 {
+      margin: 30px 0;
+    }
+    form {
+      margin-bottom: 10px;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100% !important;
+    }
+    span {
+      margin-left: 10px;
+      color: blue;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline 1px blue;
+      }
+    }
+  }
+
+  .register {
+    width: 300px;
+    text-align: center;
+    h3 {
+      margin: 30px 0;
+    }
+    form {
+      margin-bottom: 10px;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100% !important;
+    }
+    span {
+      margin-left: 10px;
+      color: blue;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline 1px blue;
+      }
+    }
+  }
+}

@@ -6,13 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/style.scss";
 import { BrowserRouter } from "react-router-dom";
+import dotenv from "dotenv";
+import { Provider } from "react-redux";
+import store from "./store";
+
+// Environment Variables
+dotenv.config({
+  path: "../config/env/config.env",
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

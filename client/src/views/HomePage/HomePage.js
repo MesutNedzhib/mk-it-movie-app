@@ -5,6 +5,7 @@ import "./HomePage.scss";
 
 function HomePage() {
   const history = useHistory();
+
   return (
     <div className="homePage">
       <div className="homePage-container">
