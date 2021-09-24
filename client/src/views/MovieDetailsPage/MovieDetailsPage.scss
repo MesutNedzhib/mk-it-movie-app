@@ -1,4 +1,15 @@
 .movieDetailsPage {
   padding: 0 120px;
   padding-top: 90px;
+
+  .your-review-section {
+    margin-top: 50px;
+
+    h2 {
+      margin: 0;
+    }
+    .star-ratings {
+      margin: 20px 0;
+    }
+  }
 }
