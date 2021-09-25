@@ -23,7 +23,9 @@ function SearchPage() {
 
         <div className="movie-section">
           {!movies?.length !== 0
-            ? movies?.map((movie) => <Movie movie={movie.show} />)
+            ? movies?.map((movie, index) => (
+                <Movie key={index} movie={movie.show} />
+              ))
             : ""}
         </div>
       </div>

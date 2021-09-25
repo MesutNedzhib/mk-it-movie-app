@@ -1,11 +1,19 @@
 import React from "react";
 import "./Movie.scss";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Movie({ movie }) {
   const history = useHistory();
 
-  console.log(movie);
+  const { isAuth } = useSelector((state) => state.isAuth);
+
+  const handleAddToFavorites = () => {
+    if (!isAuth) {
+      history.push("/auth");
+    }
+  };
+
   return (
     <div className="movie">
       <div className="movie-image">
@@ -28,7 +36,12 @@ function Movie({ movie }) {
         <a href={movie?.url ? movie?.url : ""} target="_blank">
           Visit official site
         </a>
-        <button className="btn btn-outline-success">Add To Favorites</button>
+        <button
+          onClick={() => handleAddToFavorites()}
+          className="btn btn-outline-success"
+        >
+          Add To Favorites
+        </button>
       </div>
     </div>
   );

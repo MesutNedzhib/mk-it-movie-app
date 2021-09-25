@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { authReducer } from "./reducers/authReducers";
 import { tvmazeApiReducer } from "./reducers/tvmazeApiReducer";
 const initialState = {};
 
 const reducer = combineReducers({
+  isAuth: authReducer,
   movies: tvmazeApiReducer,
 });
 
