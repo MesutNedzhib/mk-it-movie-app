@@ -8,14 +8,12 @@ import {
 } from "../constants/tvmazeApiConstants";
 import axios from "axios";
 
-const TVMAZE_API = "https://api.tvmaze.com";
-
 export const searchByMovieTitle = (title) => async (dispatch) => {
   dispatch({
     type: SEARCH_BY_MOVIE_TITLE_REQUEST,
   });
   await axios
-    .get(`${TVMAZE_API}/search/shows?q=${title}`)
+    .get(`https://api.tvmaze.com/search/shows?q=${title}`)
     .then((res) => {
       let handleData = res.data.map((item) => {
         return item.show;

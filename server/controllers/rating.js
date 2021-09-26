@@ -41,6 +41,7 @@ const getRating = expressAsyncHandler(async (req, res, next) => {
   });
 });
 
+// remove
 const changeRating = expressAsyncHandler(async (req, res, next) => {
   const { movie_title, rating } = req.body;
   console.log(req.body);
