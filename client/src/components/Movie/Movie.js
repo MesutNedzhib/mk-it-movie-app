@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { SIGN_OUT } from "../../constants/authConstants";
-import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
 
 function Movie({ movie }) {
   const history = useHistory();
@@ -103,7 +102,7 @@ function Movie({ movie }) {
           {movie?.name}
         </h2>
         <small>
-          {movie?.genres.join(", ")} | {movie?.weight}m
+          {movie?.genres?.join(", ")} | {movie?.weight}m
         </small>
         <p>{truncate(movie?.summary?.replace(/<[^>]+>/g, ""), 300)}</p>
         <a href={movie?.url ? movie?.url : ""} target="_blank" rel="noreferrer">
