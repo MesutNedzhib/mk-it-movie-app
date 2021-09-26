@@ -20,7 +20,7 @@ function App() {
           <Navbar />
           <SearchPage />
         </Route>
-        <Route path="/movies/movie-title">
+        <Route path="/movies/:movie">
           <Navbar />
           <MovieDetailsPage />
         </Route>

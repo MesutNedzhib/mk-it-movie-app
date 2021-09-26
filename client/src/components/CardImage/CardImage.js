@@ -1,12 +1,21 @@
 import React from "react";
 import "./CardImage.scss";
+import { useHistory } from "react-router-dom";
 
-function CardImage() {
+function CardImage({ movie }) {
+  const history = useHistory();
   return (
     <div className="cardImage">
       <div className="cardImage-container">
         <img
-          src="https://static.posters.cz/image/750/posters/avengers-infinity-war-one-sheet-i58560.jpg"
+          onClick={() => history.push(`/movies/${movie.name}`)}
+          src={
+            movie?.image
+              ? movie?.image?.medium
+              : movie?.image?.original
+              ? movie?.image?.original
+              : ""
+          }
           alt=""
         />
       </div>

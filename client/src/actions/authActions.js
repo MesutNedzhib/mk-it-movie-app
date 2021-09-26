@@ -8,6 +8,7 @@ import {
   SIGN_OUT,
 } from "../constants/authConstants";
 import axios from "axios";
+import { REMOVE_FAVORITE_MOVIES } from "../constants/favoriteMovieConstants";
 
 export const register = (registerData) => async (dispatch) => {
   dispatch({
@@ -52,7 +53,11 @@ export const signIn = (signInData) => async (dispatch) => {
 
 export const signOut = () => (dispatch) => {
   localStorage.removeItem("isAuth");
+  localStorage.removeItem("favoriteMovies");
   dispatch({
     type: SIGN_OUT,
+  });
+  dispatch({
+    type: REMOVE_FAVORITE_MOVIES,
   });
 };

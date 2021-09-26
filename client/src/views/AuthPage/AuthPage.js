@@ -20,7 +20,7 @@ function AuthPage() {
     if (isAuth) {
       history.goBack();
     }
-  }, [isAuth]);
+  }, [isAuth, history]);
 
   const handleRegisterData = (e) => {
     e.preventDefault();

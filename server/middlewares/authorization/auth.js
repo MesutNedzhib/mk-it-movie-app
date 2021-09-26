@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const {
   getAccessTokenFromHeader,
   isTokenIncluded,
-} = require("../../helpers/authorization/tokenHelper");
+} = require("../../helpers/authorization/tokenHelpers");
 
 const getAccessToRoute = (req, res, next) => {
   const { JWT_SECRET_KEY } = process.env;

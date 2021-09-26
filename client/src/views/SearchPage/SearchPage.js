@@ -1,10 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
+import { getMovies } from "../../actions/tvmazeApiActions";
 import Movie from "../../components/Movie/Movie";
 import "./SearchPage.scss";
 
 function SearchPage() {
-  const { loading, error, movies } = useSelector((state) => state.movies);
+  const { movies } = useSelector((state) => state.movies);
+
+  const dispatch = useDispatch();
+
+  const { isAuth } = useSelector((state) => state.isAuth);
+
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getFavoriteMovies(isAuth?.access_token));
+    }
+    dispatch(getMovies());
+  }, [dispatch, isAuth]);
 
   return (
     <div className="searchPage">
@@ -22,10 +35,8 @@ function SearchPage() {
         </div>
 
         <div className="movie-section">
-          {!movies?.length !== 0
-            ? movies?.map((movie, index) => (
-                <Movie key={index} movie={movie.show} />
-              ))
+          {movies?.length !== 0
+            ? movies?.map((movie, index) => <Movie key={index} movie={movie} />)
             : ""}
         </div>
       </div>

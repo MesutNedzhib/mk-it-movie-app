@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
 import CardImage from "../../components/CardImage/CardImage";
 import "./HomePage.scss";
 
 function HomePage() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const { isAuth } = useSelector((state) => state.isAuth);
+
+  const { favoriteMovies } = useSelector((state) => state.favoriteMovies);
+
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getFavoriteMovies(isAuth?.access_token));
+    }
+  }, [dispatch]);
 
   return (
     <div className="homePage">
@@ -27,11 +40,11 @@ function HomePage() {
           </div>
         </div>
         <div className="favorites-section">
-          <h1>Your Favorites</h1>
+          <h1>{isAuth ? isAuth?.data?.name : "Your"} Favorites</h1>
           <div className="favorites-list">
-            <CardImage />
-            <CardImage />
-            <CardImage />
+            {favoriteMovies?.map((movie, index) => (
+              <CardImage key={index} movie={movie} />
+            ))}
           </div>
         </div>
       </div>
