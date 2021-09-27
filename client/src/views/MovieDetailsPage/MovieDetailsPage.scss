@@ -1,15 +1,31 @@
 .movieDetailsPage-container {
   padding: 0 120px;
   padding-top: 90px;
+  position: relative;
 
   .your-review-section {
     margin-top: 50px;
-
+    position: relative;
     h2 {
       margin: 0;
     }
     .star-ratings {
       margin: 20px 0;
     }
+    span {
+      position: absolute;
+      margin-top: 50px;
+      margin-left: 20px;
+    }
+  }
+
+  form {
+    position: relative;
+  }
+
+  #note-circular {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 }

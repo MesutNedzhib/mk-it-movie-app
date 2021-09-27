@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
 import { getMovies } from "../../actions/tvmazeApiActions";
+import LoadingBar from "../../components/LoadingBar/LoadingBar";
 import Movie from "../../components/Movie/Movie";
 import "./SearchPage.scss";
 
 function SearchPage() {
-  const { movies } = useSelector((state) => state.movies);
+  const { loading, movies } = useSelector((state) => state.movies);
 
   const dispatch = useDispatch();
 
@@ -21,6 +22,7 @@ function SearchPage() {
 
   return (
     <div className="searchPage">
+      {loading ? <LoadingBar /> : <></>}
       <div className="searchPage-container">
         <div className="search-section">
           <h3>Search</h3>

@@ -17,6 +17,10 @@ const addMovieToFavorites = expressAsyncHandler(async (req, res, next) => {
 const getFavoriteMovies = expressAsyncHandler(async (req, res, next) => {
   const favorites = await Favorite.find({ user: req.user.id });
 
+  favorites.sort((x, y) => {
+    return new Date(y.createdAt) - new Date(x.createdAt);
+  });
+
   res.status(200).json({
     success: true,
     data: favorites,

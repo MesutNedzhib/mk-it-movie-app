@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
 import CardImage from "../../components/CardImage/CardImage";
+import LoadingBar from "../../components/LoadingBar/LoadingBar";
+import SearchIcon from "@mui/icons-material/Search";
 import "./HomePage.scss";
 
 function HomePage() {
@@ -11,7 +13,9 @@ function HomePage() {
 
   const { isAuth } = useSelector((state) => state.isAuth);
 
-  const { favoriteMovies } = useSelector((state) => state.favoriteMovies);
+  const { loading, favoriteMovies } = useSelector(
+    (state) => state.favoriteMovies
+  );
 
   useEffect(() => {
     if (isAuth) {
@@ -21,10 +25,11 @@ function HomePage() {
 
   return (
     <div className="homePage">
+      {loading ? <LoadingBar /> : <></>}
       <div className="homePage-container">
         <div className="hero-section">
           <div className="hero-info">
-            <h1>Heading</h1>
+            <h1>My Movie Collection</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
               eius nisi, culpa beatae obcaecati ipsa sunt placeat nulla ea
@@ -33,14 +38,14 @@ function HomePage() {
             </p>
             <button
               onClick={() => history.push("/search")}
-              className="btn btn-primary"
+              className="btn btn-danger "
             >
-              Search
+              Search <SearchIcon />
             </button>
           </div>
         </div>
         <div className="favorites-section">
-          <h1>{isAuth ? isAuth?.data?.name : "Your"} Favorites</h1>
+          <h2>{isAuth ? isAuth?.data?.name : "Your"} Favorites</h2>
           <div className="favorites-list">
             {favoriteMovies?.map((movie, index) => (
               <CardImage key={index} movie={movie} />

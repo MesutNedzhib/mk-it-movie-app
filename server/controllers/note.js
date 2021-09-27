@@ -38,7 +38,21 @@ const getNote = expressAsyncHandler(async (req, res, next) => {
   });
 });
 
+const removeNote = expressAsyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  const movieNote = await Note.findByIdAndRemove(id);
+
+  res.status(200).json({
+    success: true,
+    data: {
+      note: "qj mi huq",
+    },
+  });
+});
+
 module.exports = {
   note,
   getNote,
+  removeNote,
 };

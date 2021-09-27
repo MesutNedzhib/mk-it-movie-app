@@ -7,7 +7,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteMovies } from "../../actions/favoriteMovieActions";
 import { SIGN_OUT } from "../../constants/authConstants";
-import LoadingBar from "../../components/LoadingBar/LoadingBar";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function MovieDetailsPage() {
   const location = useLocation();
@@ -17,6 +17,10 @@ function MovieDetailsPage() {
   const [rating, setRating] = useState();
   const [note, setNote] = useState();
   const [loading, setLoading] = useState(true);
+  const [ratingLoading, setRatingLoading] = useState(false);
+  const [noteLoading, setNoteLoading] = useState(false);
+
+  console.log(note);
 
   const [movie, setMovie] = useState(true);
 
@@ -38,6 +42,7 @@ function MovieDetailsPage() {
 
   useEffect(() => {
     async function getRating() {
+      setRatingLoading(true);
       await axios
         .post(
           "/api/rating/getRating",
@@ -48,7 +53,10 @@ function MovieDetailsPage() {
             },
           }
         )
-        .then((res) => setRating(res.data.data.rating))
+        .then((res) => {
+          setRating(res.data.data);
+          setRatingLoading(false);
+        })
         .catch((err) => {
           if (err?.response?.status === 401) {
             localStorage.removeItem("isAuth");
@@ -65,6 +73,7 @@ function MovieDetailsPage() {
   }, []);
 
   useEffect(() => {
+    setNoteLoading(true);
     async function getNote() {
       await axios
         .post(
@@ -76,7 +85,10 @@ function MovieDetailsPage() {
             },
           }
         )
-        .then((res) => setNote(res.data.data.note))
+        .then((res) => {
+          setNote(res.data.data);
+          setNoteLoading(false);
+        }) // object is here
         .catch((err) => {
           if (err?.response?.status === 401) {
             localStorage.removeItem("isAuth");
@@ -96,6 +108,9 @@ function MovieDetailsPage() {
     if (!isAuth) {
       history.push("/auth");
     }
+
+    setRatingLoading(true);
+
     const ratingData = {
       movie_title: movie?.name,
       rating: newRating,
@@ -106,7 +121,10 @@ function MovieDetailsPage() {
           Authorization: `Bearer: ${isAuth?.access_token}`,
         },
       })
-      .then((res) => setRating(res.data.data.rating))
+      .then((res) => {
+        setRating(res.data.data);
+        setRatingLoading(false);
+      })
       .catch((err) => {
         if (err?.response?.status === 401) {
           localStorage.removeItem("isAuth");
@@ -117,14 +135,14 @@ function MovieDetailsPage() {
       });
   };
 
-  const handleNote = async (e) => {
+  const handleSubmitNote = async (e) => {
     e.preventDefault();
-
+    setNoteLoading(true);
     if (!isAuth) {
       history.push("/auth");
     }
 
-    if (note.lenght !== 0) {
+    if (note?.lenght !== 0) {
       const noteData = {
         movie_title: movie?.name,
         note: note,
@@ -135,7 +153,10 @@ function MovieDetailsPage() {
             Authorization: `Bearer: ${isAuth?.access_token}`,
           },
         })
-        .then((res) => setNote(res.data.data.note))
+        .then((res) => {
+          setNote(res.data.data);
+          setNoteLoading(false);
+        })
         .catch((err) => {
           if (err?.response?.status === 401) {
             localStorage.removeItem("isAuth");
@@ -147,6 +168,31 @@ function MovieDetailsPage() {
     }
   };
 
+  const handleRemoveNote = async (e) => {
+    e.preventDefault();
+    setNoteLoading(true);
+    if (!isAuth) {
+      history.push("/auth");
+    }
+    await axios
+      .get(`/api/note/${note?._id}/remove`, {
+        headers: {
+          Authorization: `Bearer: ${isAuth?.access_token}`,
+        },
+      })
+      .then((res) => {
+        setNote(undefined);
+        setNoteLoading(false);
+      })
+      .catch((err) => {
+        if (err?.response?.status === 401) {
+          localStorage.removeItem("isAuth");
+          dispatch({
+            type: SIGN_OUT,
+          });
+        }
+      });
+  };
   return (
     <div className="movieDetailsPage">
       <div className="movieDetailsPage-container">
@@ -156,31 +202,58 @@ function MovieDetailsPage() {
         <div className="your-review-section">
           <h2>Your Review</h2>
           <StarRatings
-            rating={rating}
+            rating={rating?.rating}
             starRatedColor="yellow"
             starHoverColor="yellow"
             changeRating={changeRating}
             numberOfStars={5}
+            
             name="rating"
           />
+          {ratingLoading ? (
+            <CircularProgress size={15} color={"error"} />
+          ) : (
+            <></>
+          )}
         </div>
-        <form className="form-group w-50">
+        <form className="form-group w-50 ">
+          {noteLoading ? (
+            <CircularProgress id="note-circular" size={15} color={"error"} />
+          ) : (
+            <></>
+          )}
+
           <textarea
             style={{ resize: "none" }}
             className="form-control"
             rows="5"
             placeholder="Your private notes and comments about the movie..."
             onChange={(e) => setNote(e.target.value)}
-            defaultValue={note}
+            value={
+              note !== undefined ? note?.note : note ? note?.note : "" ? "" : ""
+            }
           />
-          <button
-            onClick={(e) => handleNote(e)}
-            className="btn btn-outline-success mt-2"
-            type="submit"
-            style={{ display: "block", marginLeft: "auto" }}
-          >
-            SUBMIT
-          </button>
+          <div className="text-buttons d-flex justify-content-end">
+            {note?.note !== undefined ? (
+              <button
+                onClick={(e) => handleRemoveNote(e)}
+                className="btn btn-outline-danger mt-2"
+                type="submit"
+                style={{ marginRight: "10px" }}
+              >
+                REMOVE
+              </button>
+            ) : (
+              <></>
+            )}
+            <button
+              onClick={(e) => handleSubmitNote(e)}
+              className="btn btn-outline-success mt-2"
+              type="submit"
+            >
+              SUBMIT
+            </button>
+          </div>
         </form>
       </div>
     </div>

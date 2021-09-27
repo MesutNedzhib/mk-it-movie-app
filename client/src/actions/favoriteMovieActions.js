@@ -20,7 +20,6 @@ export const getFavoriteMovies = (access_token) => async (dispatch) => {
         type: GET_FAVORITE_MOVIES_SUCCESS,
         payload: res.data.data,
       });
-      localStorage.setItem("favoriteMovies", JSON.stringify(res.data.data));
     })
     .catch((err) => {
       dispatch({
@@ -29,7 +28,6 @@ export const getFavoriteMovies = (access_token) => async (dispatch) => {
       });
       if (err.response.status === 401) {
         localStorage.removeItem("isAuth");
-        localStorage.removeItem("favoriteMovies");
         dispatch({
           type: SIGN_OUT,
         });
