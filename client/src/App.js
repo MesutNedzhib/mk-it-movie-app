@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import SearchPage from "./views/SearchPage/SearchPage";
 import MovieDetailsPage from "./views/MovieDetailsPage/MovieDetailsPage";
 import AuthPage from "./views/AuthPage/AuthPage";
+import Error404 from "./components/404/404";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         <Route path="/movies/:movie">
           <Navbar />
           <MovieDetailsPage />
+        </Route>
+        <Route>
+          <Error404 />
         </Route>
       </Switch>
     </div>

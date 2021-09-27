@@ -10,21 +10,23 @@ import { SIGN_OUT } from "../../constants/authConstants";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function MovieDetailsPage() {
-  const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { isAuth } = useSelector((state) => state.isAuth);
-  const [rating, setRating] = useState();
-  const [note, setNote] = useState();
-  const [loading, setLoading] = useState(true);
-  const [ratingLoading, setRatingLoading] = useState(false);
-  const [noteLoading, setNoteLoading] = useState(false);
 
-  console.log(note);
+  const location = useLocation();
+  let url_title = location.pathname.split("/").slice(2);
+
+  const { isAuth } = useSelector((state) => state.isAuth);
 
   const [movie, setMovie] = useState(true);
 
-  let url_title = location.pathname.split("/").slice(2);
+  // States
+  const [rating, setRating] = useState();
+  const [note, setNote] = useState();
+
+  // Loadings
+  const [ratingLoading, setRatingLoading] = useState(false);
+  const [noteLoading, setNoteLoading] = useState(false);
 
   useEffect(() => {
     async function getSingleMovie() {
@@ -207,7 +209,6 @@ function MovieDetailsPage() {
             starHoverColor="yellow"
             changeRating={changeRating}
             numberOfStars={5}
-            
             name="rating"
           />
           {ratingLoading ? (

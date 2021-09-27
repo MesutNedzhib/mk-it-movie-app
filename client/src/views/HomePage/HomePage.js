@@ -45,7 +45,7 @@ function HomePage() {
           </div>
         </div>
         <div className="favorites-section">
-          <h2>{isAuth ? isAuth?.data?.name : "Your"} Favorites</h2>
+          <h2>Your Favorites</h2>
           <div className="favorites-list">
             {favoriteMovies?.map((movie, index) => (
               <CardImage key={index} movie={movie} />

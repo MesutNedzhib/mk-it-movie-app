@@ -91,6 +91,7 @@ function Movie({ movie }) {
     <div className="movie">
       <div className="movie-image">
         <img
+          onClick={() => history.push(`/movies/${movie?.name}`)}
           src={
             movie?.image?.medium ? movie?.image?.medium : movie?.image?.original
           }

@@ -12,7 +12,6 @@ const FavoriteShema = new Schema({
   movieId: {
     type: String,
     required: true,
-    unique: true,
   },
   image: {
     type: Schema.Types.Mixed,

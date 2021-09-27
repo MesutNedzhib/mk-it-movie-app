@@ -45,21 +45,31 @@ function Navbar() {
             Search
           </button>
         </form>
-        {isAuth ? (
-          <button
-            onClick={() => handleSignOut()}
-            className="btn btn-primary bg-transparent text-primary"
-          >
-            Sign Out
-          </button>
-        ) : (
-          <button
-            onClick={() => history.push("/auth")}
-            className="btn btn-primary bg-transparent text-primary"
-          >
-            Sign In
-          </button>
-        )}
+        <>
+          {isAuth ? (
+            <div>
+              <button
+                className="btn btn-danger bg-transparent text-danger"
+                style={{ marginRight: "10px" }}
+              >
+                {isAuth?.data?.name}
+              </button>
+              <button
+                onClick={() => handleSignOut()}
+                className="btn btn-primary bg-transparent text-primary"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => history.push("/auth")}
+              className="btn btn-primary bg-transparent text-primary"
+            >
+              Sign In
+            </button>
+          )}
+        </>
       </nav>
     </div>
   );
