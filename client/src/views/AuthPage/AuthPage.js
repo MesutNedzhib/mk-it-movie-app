@@ -108,6 +108,7 @@ function AuthPage() {
                 className="form-control"
                 type="password"
                 placeholder="Repeat password"
+                minLength="6"
               />
             </div>
 

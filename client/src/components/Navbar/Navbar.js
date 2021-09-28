@@ -26,7 +26,7 @@ function Navbar() {
   return (
     <div className="navbar-container">
       <nav className="navbar justify-content-between ">
-        <Link to="" className="navbar-brand">
+        <Link to="/" className="navbar-brand" style={{ color: "white" }}>
           My Movie Collection
         </Link>
         <form className="form-inline">

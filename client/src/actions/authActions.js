@@ -29,7 +29,7 @@ export const register = (registerData) => async (dispatch) => {
     .catch((err) =>
       dispatch({
         type: REGISTER_FAIL,
-        payload: err.response.data,
+        payload: err.response.data.message,
       })
     );
 };
