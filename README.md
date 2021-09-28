@@ -3,7 +3,13 @@
 My Movie Collection - is a web application, where consumers can add or remove a favorite movie to their list, also set or change a rating or note to it.
 
 ![view-image-1](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll.png)
+
+#
+
 ![view-image-2](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-search.png)
+
+#
+
 ![view-image-3](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-details.png)
 
 ## How to run
