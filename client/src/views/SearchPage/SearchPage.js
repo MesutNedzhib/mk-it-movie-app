@@ -7,11 +7,11 @@ import Movie from "../../components/Movie/Movie";
 import "./SearchPage.scss";
 
 function SearchPage() {
-  const searchInput = useRef();
-  const { loading, movies } = useSelector((state) => state.movies);
-
   const dispatch = useDispatch();
 
+  const searchInput = useRef();
+
+  const { loading, movies } = useSelector((state) => state.movies);
   const { isAuth } = useSelector((state) => state.isAuth);
 
   useEffect(() => {

@@ -14,6 +14,7 @@ function Movie({ movie }) {
 
   const [isExist, setIsExits] = useState(false);
 
+  // Check movies from favorites is exist in TVMaze API
   useEffect(() => {
     if (favoriteMovies?.length > 0) {
       let index = favoriteMovies?.findIndex(

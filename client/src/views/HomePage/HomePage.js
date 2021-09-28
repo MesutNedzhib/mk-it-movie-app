@@ -18,6 +18,7 @@ function HomePage() {
     (state) => state.favoriteMovies
   );
 
+  // Get Favorite Movies 
   useEffect(() => {
     if (isAuth) {
       dispatch(getFavoriteMovies(isAuth?.access_token));
@@ -53,7 +54,7 @@ function HomePage() {
                 <CardImage key={index} movie={movie} />
               ))
             ) : (
-              <MessageBox message={"Empty"} variant={"info"} />
+              <MessageBox message={"Empty"} />
             )}
           </div>
         </div>

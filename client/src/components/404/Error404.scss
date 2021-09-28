@@ -1,0 +1,17 @@
+.error404 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  span {
+    cursor: pointer;
+    color: rgba(25, 25, 228, 0.685);
+
+    &:hover {
+      text-decoration: underline 1px black;
+    }
+  }
+}

@@ -7,13 +7,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border: 1px #888 solid;
   h5 {
     margin: 0;
     padding: 10px 5px;
     padding-bottom: 12px;
   }
 }
+
 .variant-info {
   border: 1px blue solid;
   color: blue;

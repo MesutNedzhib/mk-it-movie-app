@@ -8,6 +8,9 @@ import {
 } from "../constants/tvmazeApiConstants";
 import axios from "axios";
 
+/////////////////////////////////////////////////////////////////////
+// This file includes queries to TVMaze API
+
 export const searchByMovieTitle = (title) => async (dispatch) => {
   dispatch({
     type: SEARCH_BY_MOVIE_TITLE_REQUEST,

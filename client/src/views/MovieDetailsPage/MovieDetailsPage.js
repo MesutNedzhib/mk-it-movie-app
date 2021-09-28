@@ -28,8 +28,14 @@ function MovieDetailsPage() {
   const [ratingLoading, setRatingLoading] = useState(false);
   const [noteLoading, setNoteLoading] = useState(false);
 
-  console.log(noteLoading);
+  // Get Favorite Movies By User
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getFavoriteMovies(isAuth?.access_token));
+    }
+  }, [isAuth]);
 
+  // Get Single Movie from TVMaze Api
   useEffect(() => {
     async function getSingleMovie() {
       await axios
@@ -37,13 +43,10 @@ function MovieDetailsPage() {
         .then((res) => setMovie(res.data))
         .catch((err) => console.log(err.response));
     }
-    if (isAuth) {
-      dispatch(getFavoriteMovies(isAuth?.access_token));
-    }
-
     getSingleMovie();
   }, []);
 
+  // Get Rating
   useEffect(() => {
     async function getRating() {
       setRatingLoading(true);
@@ -76,6 +79,7 @@ function MovieDetailsPage() {
     }
   }, []);
 
+  // Get Note
   useEffect(() => {
     async function getNote() {
       setNoteLoading(true);
@@ -108,6 +112,7 @@ function MovieDetailsPage() {
     }
   }, []);
 
+  // Change Rating
   const changeRating = async (newRating) => {
     if (!isAuth) {
       history.push("/auth");
@@ -139,6 +144,7 @@ function MovieDetailsPage() {
       });
   };
 
+  // Submit Note to Movie
   const handleSubmitNote = async (e) => {
     e.preventDefault();
     setNoteLoading(true);
@@ -172,6 +178,7 @@ function MovieDetailsPage() {
     }
   };
 
+  // Remove note from movie
   const handleRemoveNote = async (e) => {
     e.preventDefault();
     setNoteLoading(true);
@@ -197,6 +204,7 @@ function MovieDetailsPage() {
         }
       });
   };
+
   return (
     <div className="movieDetailsPage">
       <div className="movieDetailsPage-container">
@@ -214,18 +222,18 @@ function MovieDetailsPage() {
             name="rating"
           />
           {ratingLoading ? (
-            <CircularProgress size={15} color={"error"} />
+            <CircularProgress id="rating-circular" size={15} color={"error"} />
           ) : (
             <></>
           )}
         </div>
+
         <form className="form-group w-50 ">
           {noteLoading ? (
             <CircularProgress id="note-circular" size={15} color={"error"} />
           ) : (
             <></>
           )}
-
           <textarea
             style={{ resize: "none" }}
             className="form-control"
