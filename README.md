@@ -6,11 +6,11 @@ My Movie Collection - is a web application, where consumers can add or remove a 
 
 #
 
-![view-image-2](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-search.png)
+![view-image-3](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-details.png)
 
 #
 
-![view-image-3](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-details.png)
+![view-image-2](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-search.png)
 
 ## How to run
 
