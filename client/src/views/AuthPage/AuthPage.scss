@@ -1,8 +1,10 @@
 .authPage {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-top: -56px;
   .signIn {
     width: 300px;
     text-align: center;
@@ -51,5 +53,9 @@
         text-decoration: underline 1px blue;
       }
     }
+  }
+
+  .sign-form {
+    text-align: left;
   }
 }

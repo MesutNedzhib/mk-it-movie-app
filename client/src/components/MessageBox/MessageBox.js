@@ -5,7 +5,7 @@ function MessageBox({ message, variant }) {
   return (
     <div className="messageBox">
       <div className={`messageBox-container variant-${variant}`}>
-        <span>{message}</span>
+        <h5>{message}</h5>
       </div>
     </div>
   );

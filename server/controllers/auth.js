@@ -11,6 +11,12 @@ const {
 const register = expressAsyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;
 
+  const isExist = await User.findOne({ email });
+
+  if (isExist) {
+    return next(new CustomError("There already have a user with such email"));
+  }
+
   const user = await User.create({
     name,
     email,
