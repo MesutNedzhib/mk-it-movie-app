@@ -4,7 +4,7 @@ const CustomError = require("../helpers/error/CustomError");
 
 const setRating = expressAsyncHandler(async (req, res, next) => {
   const { movie_title, rating } = req.body;
-  
+
   const isExist = await Rating.findOne({ movie_title, user: req.user.id });
 
   if (!isExist) {
@@ -40,7 +40,6 @@ const getRating = expressAsyncHandler(async (req, res, next) => {
   });
 });
 
-// remove
 const changeRating = expressAsyncHandler(async (req, res, next) => {
   const { movie_title, rating } = req.body;
   console.log(req.body);
