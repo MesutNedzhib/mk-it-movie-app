@@ -1,8 +1,8 @@
-# Fakegram
+# My Movie Collection
 
-Fakegram - is a web application similar of instagram where consumers can upload their pictures, comment and like on posts, follow and unfollow other consumers in REAL TIME.
+My Movie Collection - is a web application, where consumers can add or remove a favorite movie to their list, also set or change a rating or note to it.
 
-![view-image-1](https://github.com/MesutNedzhib/fakegram-app-v.1/blob/master/client/public/png/desktopPluSmobile.png)
+![view-image-1](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll.png)
 
 v.1 - Demo
 
