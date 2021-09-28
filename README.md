@@ -3,8 +3,8 @@
 My Movie Collection - is a web application, where consumers can add or remove a favorite movie to their list, also set or change a rating or note to it.
 
 ![view-image-1](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll.png)
-
-v.1 - Demo
+![view-image-2](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-search.png)
+![view-image-3](https://github.com/MesutNedzhib/mk-it-movie-app/blob/master/client/public/my-movie-coll-details.png)
 
 ## How to run
 
@@ -27,7 +27,7 @@ The MERN stack consists of MongoDB, Express JS, React JS and Node JS.
 Access to the controllers in the application is done by authenticating the Json Web Token. Upon successful login in the system, a token is attached to the user, which provides access to functionalities according to his role.
 The application has the following functionalities:
 
-## Backend 
+## Backend
 
 - Authorization
   - Register
@@ -51,6 +51,7 @@ The application has the following functionalities:
 ## Dependencies
 
 1. Api:
+
    - Express
    - Cors
    - Dotenv
