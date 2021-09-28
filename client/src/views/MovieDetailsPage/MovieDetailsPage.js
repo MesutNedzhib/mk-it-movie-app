@@ -28,6 +28,8 @@ function MovieDetailsPage() {
   const [ratingLoading, setRatingLoading] = useState(false);
   const [noteLoading, setNoteLoading] = useState(false);
 
+  console.log(noteLoading);
+
   useEffect(() => {
     async function getSingleMovie() {
       await axios
@@ -75,8 +77,8 @@ function MovieDetailsPage() {
   }, []);
 
   useEffect(() => {
-    setNoteLoading(true);
     async function getNote() {
+      setNoteLoading(true);
       await axios
         .post(
           "/api/note/getNote",
@@ -90,7 +92,7 @@ function MovieDetailsPage() {
         .then((res) => {
           setNote(res.data.data);
           setNoteLoading(false);
-        }) // object is here
+        })
         .catch((err) => {
           if (err?.response?.status === 401) {
             localStorage.removeItem("isAuth");

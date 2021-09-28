@@ -1,0 +1,23 @@
+.messageBox {
+  width: 100%;
+}
+.messageBox-container {
+  border-radius: 0.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: block;
+  }
+}
+.variant-info {
+  border: 1px blue solid;
+  color: blue;
+}
+
+.variant-error {
+  border: 1px #dc3545 solid;
+  color: #dc3545;
+}

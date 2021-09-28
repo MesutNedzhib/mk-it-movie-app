@@ -6,6 +6,7 @@ import CardImage from "../../components/CardImage/CardImage";
 import LoadingBar from "../../components/LoadingBar/LoadingBar";
 import SearchIcon from "@mui/icons-material/Search";
 import "./HomePage.scss";
+import MessageBox from "../../components/MessageBox/MessageBox";
 
 function HomePage() {
   const history = useHistory();
@@ -47,9 +48,13 @@ function HomePage() {
         <div className="favorites-section">
           <h2>Your Favorites</h2>
           <div className="favorites-list">
-            {favoriteMovies?.map((movie, index) => (
-              <CardImage key={index} movie={movie} />
-            ))}
+            {favoriteMovies?.length !== 0 ? (
+              favoriteMovies?.map((movie, index) => (
+                <CardImage key={index} movie={movie} />
+              ))
+            ) : (
+              <MessageBox message={"Empty"} variant={"info"} />
+            )}
           </div>
         </div>
       </div>
