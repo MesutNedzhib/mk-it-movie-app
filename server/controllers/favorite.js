@@ -32,6 +32,8 @@ const removeMovieFromFavorites = expressAsyncHandler(async (req, res, next) => {
 
   const favorites = await Favorite.findOneAndRemove({ movieId: id });
 
+  await favorites.remove();
+
   res.status(200).json({
     success: true,
     data: favorites,

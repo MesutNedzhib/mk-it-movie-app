@@ -26,6 +26,12 @@ const UserSchema = new Schema({
     default: "user",
     enum: ["user", "admin"],
   },
+  favorites: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Favorite",
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
