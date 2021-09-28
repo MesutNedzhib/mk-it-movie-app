@@ -6,7 +6,6 @@ const {
   validateUserInput,
   comparePassword,
 } = require("../helpers/input/inputHelpers");
-// const sendEmail = require("../helpers/libraries/sendEmail");
 
 const register = expressAsyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;

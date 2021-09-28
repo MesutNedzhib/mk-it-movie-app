@@ -1,5 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const Note = require("../models/Note");
+
 const note = expressAsyncHandler(async (req, res, next) => {
   const { movie_title, note } = req.body;
 
