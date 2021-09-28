@@ -5,10 +5,15 @@ import {
   GET_FAVORITE_MOVIES_REQUEST,
   GET_FAVORITE_MOVIES_SUCCESS,
 } from "../constants/favoriteMovieConstants";
+
+/////////////////////////////////////////////////////////////////////
+// This file includes queries to the users favorite movie database
+
 export const getFavoriteMovies = (access_token) => async (dispatch) => {
   dispatch({
     type: GET_FAVORITE_MOVIES_REQUEST,
   });
+
   await axios
     .get("/api/favorites/", {
       headers: {

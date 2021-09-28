@@ -10,10 +10,14 @@ import {
 import axios from "axios";
 import { REMOVE_FAVORITE_MOVIES } from "../constants/favoriteMovieConstants";
 
+/////////////////////////////////////////////////////////////////////
+// This file includes queries to the customer authorization database
+
 export const register = (registerData) => async (dispatch) => {
   dispatch({
     type: REGISTER_REQUEST,
   });
+
   await axios
     .post("/api/auth/register", registerData)
     .then((res) =>
@@ -53,7 +57,6 @@ export const signIn = (signInData) => async (dispatch) => {
 
 export const signOut = () => (dispatch) => {
   localStorage.removeItem("isAuth");
-  localStorage.removeItem("favoriteMovies");
   dispatch({
     type: SIGN_OUT,
   });
