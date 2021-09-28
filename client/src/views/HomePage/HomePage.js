@@ -18,12 +18,12 @@ function HomePage() {
     (state) => state.favoriteMovies
   );
 
-  // Get Favorite Movies 
+  // Get Favorite Movies
   useEffect(() => {
     if (isAuth) {
       dispatch(getFavoriteMovies(isAuth?.access_token));
     }
-  }, [dispatch]);
+  }, [dispatch, isAuth]);
 
   return (
     <div className="homePage">

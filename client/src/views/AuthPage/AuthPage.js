@@ -29,7 +29,7 @@ function AuthPage() {
   };
 
   const checkPasswords = (pass1, pass2) => {
-    return pass1.length === pass2.length && pass1 == pass2;
+    return pass1.length === pass2.length;
   };
 
   const handleRegisterData = (e) => {
